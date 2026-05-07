@@ -13,6 +13,7 @@
   --shadow: 0 18px 45px rgba(22, 43, 98, 0.14);
   --radius: 8px;
   --max: 1140px;
+  --hero-viewport-offset: 124px;
 }
 
 * {
@@ -823,6 +824,7 @@ legend {
 
 .page-hero {
   position: relative;
+  min-height: calc(100svh - var(--hero-viewport-offset));
   overflow: hidden;
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.86) 48%, rgba(255, 255, 255, 0.44) 100%),
@@ -842,9 +844,9 @@ legend {
   position: relative;
   z-index: 1;
   display: grid;
-  min-height: 430px;
+  min-height: calc(100svh - var(--hero-viewport-offset));
   align-items: center;
-  padding: 72px 0;
+  padding: clamp(54px, 8svh, 82px) 0;
 }
 
 .page-hero-inner > div {
@@ -1286,6 +1288,10 @@ legend {
 }
 
 @media (min-width: 1025px) and (max-height: 850px) {
+  :root {
+    --hero-viewport-offset: 118px;
+  }
+
   .header-inner {
     min-height: 76px;
   }
@@ -1384,6 +1390,10 @@ legend {
 }
 
 @media (max-width: 720px) {
+  :root {
+    --hero-viewport-offset: 69px;
+  }
+
   .container {
     width: min(var(--max), calc(100% - 28px));
   }
@@ -1471,13 +1481,12 @@ legend {
   }
 
   .page-hero-inner {
-    min-height: auto;
-    padding: 54px 0;
+    min-height: calc(100svh - var(--hero-viewport-offset));
+    padding: clamp(32px, 6.5svh, 54px) 0;
   }
 
   .page-hero-fit .page-hero-inner {
     z-index: 2;
-    min-height: calc(100svh - 69px);
     padding: clamp(26px, 5svh, 38px) 0 clamp(34px, 6svh, 50px);
   }
 
@@ -1700,6 +1709,10 @@ legend {
 }
 
 @media (max-width: 380px) {
+  :root {
+    --hero-viewport-offset: 65px;
+  }
+
   .container {
     width: min(var(--max), calc(100% - 26px));
   }
@@ -1729,7 +1742,6 @@ legend {
   }
 
   .page-hero-fit .page-hero-inner {
-    min-height: calc(100svh - 65px);
     padding: 24px 0 36px;
   }
 
